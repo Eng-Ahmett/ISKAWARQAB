@@ -2,8 +2,16 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const port = 3000;
+<<<<<<< HEAD
 const userRoutes = require('./Routes/user.routes');
 app.use(express.json());
+=======
+// catagory routes
+const catagoryrouter = require('./Routes/catagory.routes');
+const { CatagoryModel } = require('./models/catagory.service');
+
+
+>>>>>>> 449b6d2 (catagory by eng ismacil)
 mongoose.connect('mongodb+srv://Eng-Ahmett:Ahmed123@cluster0.kt7zden.mongodb.net/?appName=Cluster0',).then(() => {
   console.log('Connected to MongoDB');
 }).catch((err) => {
@@ -11,6 +19,7 @@ mongoose.connect('mongodb+srv://Eng-Ahmett:Ahmed123@cluster0.kt7zden.mongodb.net
 });
 app.use('/users', userRoutes);
 
+<<<<<<< HEAD
 app.use((err, req, res, next) => {
    if(err instanceof SyntaxError && err.status === 400 && 'body' in err){
     return res.status(400).json({
@@ -21,6 +30,13 @@ app.use((err, req, res, next) => {
    }
    next(err);
 });
+=======
+// router for catagory routes
+app.use('/catagory', catagoryrouter);
+
+
+
+>>>>>>> 449b6d2 (catagory by eng ismacil)
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
